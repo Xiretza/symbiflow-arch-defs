@@ -1,12 +1,12 @@
 set(
-  ICESTORM_DB
-  ${symbiflow-arch-defs_SOURCE_DIR}/third_party/icestorm/icebox/icebox.py
-  CACHE FILEPATH "Path to icebox.py module"
-  )
-set(
   ICEBOX_PATH
   ${symbiflow-arch-defs_SOURCE_DIR}/third_party/icestorm/icebox
   CACHE PATH "Path to icebox directory"
+  )
+set(
+  ICESTORM_DB
+  ${ICEBOX_PATH}/icebox.py
+  CACHE FILEPATH "Path to icebox.py module"
   )
 
 set(ICE_UTILS_DIR ${symbiflow-arch-defs_SOURCE_DIR}/ice40/utils)

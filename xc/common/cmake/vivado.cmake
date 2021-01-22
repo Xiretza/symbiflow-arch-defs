@@ -185,7 +185,7 @@ function(ADD_VIVADO_TARGET)
 
   set(NAME ${ADD_VIVADO_TARGET_NAME})
   if(NOT DEFINED ENV{XRAY_VIVADO_SETTINGS})
-      message( WARNING "Vivado targets for ${NAME} not emitted, XRAY_VIVADO_SETTINGS env var must be set to point to Vivado settings.sh" )
+      #message( WARNING "Vivado targets for ${NAME} not emitted, XRAY_VIVADO_SETTINGS env var must be set to point to Vivado settings.sh" )
       return()
   endif()
 
