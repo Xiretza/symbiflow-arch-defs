@@ -3,7 +3,7 @@ import sys
 
 
 def disable_widgets_if_not_interactive(kwargs):
-    if not (sys.stdout.isatty() and sys.stderr.isatty()):
+    if False and not (sys.stdout.isatty() and sys.stderr.isatty()):
         # Disable all widgets if non-interactive
         print('No progressbar disabled because non-interactive terminal.')
         kwargs['widgets'] = []
