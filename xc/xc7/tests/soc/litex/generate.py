@@ -3,10 +3,10 @@
 import os
 import argparse
 
-from litex.boards.targets.arty import _CRG
+from litex_boards.targets.arty import _CRG
 from liteeth.phy.mii import LiteEthPHYMII
 from litex.soc.cores.led import LedChaser
-from litex.boards.platforms import arty
+from litex_boards.platforms import arty
 from litex.soc.integration.soc_core import SoCCore
 from litex.soc.integration.builder import Builder
 from litex.soc.integration.soc_core import soc_core_args, soc_core_argdict
@@ -37,7 +37,7 @@ class BaseSoC(SoCCore):
             **kwargs
         )
 
-        self.submodules.crg = _CRG(platform, sys_clk_freq, toolchain)
+        self.submodules.crg = _CRG(platform, sys_clk_freq)
 
         # DDR3 SDRAM -------------------------------------------------------------------------------
         if with_ram:
