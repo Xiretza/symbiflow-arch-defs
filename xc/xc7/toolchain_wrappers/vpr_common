@@ -74,12 +74,7 @@ function parse_args {
           exit 1
      fi
 
-     export DEVICE=$DEVICE
-     export EBLIF=$EBLIF
-     export PCF=$PCF
-     export NET=$NET
-     export SDC=$SDC
-     export VPR_OPTIONS=$VPR_OPTIONS
+     export DEVICE EBLIF PCF NET SDC VPR_OPTIONS
 
      export ARCH_DIR=${SHARE_DIR_PATH}/arch/${DEVICE}
      export ARCH_DEF=${ARCH_DIR}/arch.timing.xml
