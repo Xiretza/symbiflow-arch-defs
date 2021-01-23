@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-MYPATH=`realpath $0`
-MYPATH=`dirname ${MYPATH}`
+MYPATH=$(realpath $0)
+MYPATH=$(dirname ${MYPATH})
 
 # shellcheck source=env
 source ${MYPATH}/env

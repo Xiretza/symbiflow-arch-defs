@@ -1,10 +1,10 @@
 #!/bin/bash
 set -eu
 
-MYPATH=`realpath $0`
-MYPATH=`dirname ${MYPATH}`
+MYPATH=$(realpath $0)
+MYPATH=$(dirname ${MYPATH})
 
-export SHARE_DIR_PATH=`realpath ${MYPATH}/../share/symbiflow`
+export SHARE_DIR_PATH=$(realpath ${MYPATH}/../share/symbiflow)
 
 EBLIF=$1
 NET=$2

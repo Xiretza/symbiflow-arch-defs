@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-MYPATH=`realpath $0`
-MYPATH=`dirname ${MYPATH}`
+MYPATH=$(realpath $0)
+MYPATH=$(dirname ${MYPATH})
 
 # shellcheck source=env
 source ${MYPATH}/env
@@ -16,7 +16,7 @@ fi
 OPTS=d:f:b:p:
 LONGOPTS=device:,fasm:,bit:,part:
 
-PARSED_OPTS=`getopt --options=${OPTS} --longoptions=${LONGOPTS} --name $0 -- $@`
+PARSED_OPTS=$(getopt --options=${OPTS} --longoptions=${LONGOPTS} --name $0 -- $@)
 eval set -- ${PARSED_OPTS}
 
 DEVICE=""
@@ -61,7 +61,7 @@ if [[ -z $DEVICE ]]; then
 	fi
 fi
 
-DBROOT=`realpath ${DATABASE_DIR}/${DEVICE}`
+DBROOT=$(realpath ${DATABASE_DIR}/${DEVICE})
 
 if [[ -z $FASM ]]; then
 	echo "Please provide fasm file name"
