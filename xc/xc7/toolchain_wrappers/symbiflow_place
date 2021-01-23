@@ -1,13 +1,13 @@
 #!/bin/bash
 set -eu
 
-MYPATH=$(realpath $0)
-MYPATH=$(dirname ${MYPATH})
+MYPATH=$(realpath "$0")
+MYPATH=$(dirname "${MYPATH}")
 
 # shellcheck source=env
-source ${MYPATH}/env
+source "${MYPATH}/env"
 # shellcheck source=vpr_common
-source ${MYPATH}/vpr_common
+source "${VPRPATH}/vpr_common"
 
 parse_args "$@"
 
@@ -23,7 +23,7 @@ fi
 OUT_NOISY_WARNINGS=noisy_warnings-${DEVICE}_place.log
 
 echo "Generating coinstrains ..."
-symbiflow_generate_constraints $EBLIF $NET $PART $DEVICE $ARCH_DEF $PCF
+symbiflow_generate_constraints "${EBLIF}" "${NET}" "${PART}" "${DEVICE}" "${ARCH_DEF}" "${PCF}"
 
 run_vpr --fix_clusters constraints.place --place
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 set -eu
 
-MYPATH=$(realpath $0)
-MYPATH=$(dirname ${MYPATH})
+MYPATH=$(realpath "$0")
+MYPATH=$(dirname "${MYPATH}")
 
 # shellcheck source=env
-source ${MYPATH}/env
+source "${MYPATH}/env"
 # shellcheck source=vpr_common
-source ${VPRPATH}/vpr_common
+source "${VPRPATH}/vpr_common"
 
 parse_args "$@"
 
@@ -21,8 +21,8 @@ run_genfasm
 echo "FASM extra: $FASM_EXTRA"
 if [[ -f $FASM_EXTRA ]]; then
 	echo "writing final fasm"
-	cat ${TOP}.fasm $FASM_EXTRA > tmp.fasm
-	mv tmp.fasm ${TOP}.fasm
+	cat "${TOP}.fasm" "${FASM_EXTRA}" > tmp.fasm
+	mv tmp.fasm "${TOP}.fasm"
 fi
 
 mv vpr_stdout.log fasm.log
