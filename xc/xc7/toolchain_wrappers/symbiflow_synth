@@ -3,12 +3,9 @@ set -eu
 
 MYPATH=$(realpath "$0")
 MYPATH=$(dirname "${MYPATH}")
+# shellcheck source=env
+source "${MYPATH}/env"
 
-export SHARE_DIR_PATH=$(realpath "${MYPATH}/../share/symbiflow")
-export TECHMAP_PATH=${SHARE_DIR_PATH}/techmaps/xc7_vpr/techmap
-
-
-export UTILS_PATH=${SHARE_DIR_PATH}/scripts
 SYNTH_TCL_PATH=${UTILS_PATH}/xc7/synth.tcl
 CONV_TCL_PATH=${UTILS_PATH}/xc7/conv.tcl
 SPLIT_INOUTS=${UTILS_PATH}/split_inouts.py
@@ -89,8 +86,6 @@ if [[ ${#VERILOG_FILES[@]} -eq 0 ]]; then
 	echo "Please provide at least one Verilog file"
 	exit 1
 fi
-
-DATABASE_DIR=${DATABASE_DIR:=$(prjxray-config)}
 
 export TOP=${TOP}
 export USE_ROI="FALSE"

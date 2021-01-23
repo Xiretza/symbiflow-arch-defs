@@ -3,8 +3,8 @@ set -eu
 
 MYPATH=$(realpath "$0")
 MYPATH=$(dirname "${MYPATH}")
-
-export SHARE_DIR_PATH=$(realpath "${MYPATH}/../share/symbiflow")
+# shellcheck source=env
+source "${MYPATH}/env"
 
 EBLIF=$1
 NET=$2

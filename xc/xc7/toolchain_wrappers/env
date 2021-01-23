@@ -1,7 +1,14 @@
 #!/bin/bash
 
-MYPATH=$(realpath "$0")
-MYPATH=$(dirname "${MYPATH}")
+ENVPATH=$(realpath "$0")
+ENVPATH=$(dirname "${ENVPATH}")
 
-export VPRPATH=${VPRPATH:-$MYPATH}
+DATABASE_DIR=${DATABASE_DIR:-$(prjxray-config)}
+
+SHARE_DIR_PATH=$(realpath "${ENVPATH}/../share/symbiflow")
+export SHARE_DIR_PATH
+export TECHMAP_PATH=${SHARE_DIR_PATH}/techmaps/xc7_vpr/techmap
+export UTILS_PATH=${SHARE_DIR_PATH}/scripts
+
+export VPRPATH=${VPRPATH:-$ENVPATH}
 export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH:-}

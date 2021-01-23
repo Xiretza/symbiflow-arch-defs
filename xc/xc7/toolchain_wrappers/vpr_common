@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ -v SHARE_DIR_PATH ]] || { echo "Error: env must be sourced before vpr_common"; exit 1; }
+
 if [[ -z ${VPR_OPTIONS:+} ]]; then
      echo "Using default VPR options."
      read -ra VPR_OPTIONS <<<"@VPR_ARGS@"
@@ -61,7 +63,7 @@ function parse_args {
 
      if [[ -z $DEVICE ]] && [[ -n $PART ]]; then
           # Try to find device name. Accept only when exactly one is found
-          PART_DIRS=("${MYPATH}"/../share/symbiflow/arch/*/"${PART}")
+          PART_DIRS=("${SHARE_DIR_PATH}"/arch/*/"${PART}")
           if [[ ${#PART_DIRS[@]} -eq 1 ]]; then
                DEVICE=$(basename "$(dirname "${PART_DIRS[0]}")")
           fi
@@ -83,7 +85,7 @@ function parse_args {
      export SDC=$SDC
      export VPR_OPTIONS=$VPR_OPTIONS
 
-     export ARCH_DIR=$(realpath "${MYPATH}/../share/symbiflow/arch/$DEVICE")
+     export ARCH_DIR=${SHARE_DIR_PATH}/arch/${DEVICE}
      export ARCH_DEF=${ARCH_DIR}/arch.timing.xml
      export LOOKAHEAD=${ARCH_DIR}/rr_graph_${DEVICE}.lookahead.bin
      export RR_GRAPH=${ARCH_DIR}/rr_graph_${DEVICE}.rr_graph.real.bin
