@@ -19,7 +19,6 @@ FASM_EXTRA=${TOP}_fasm_extra.fasm
 
 run_genfasm
 
-echo "FASM extra: $FASM_EXTRA"
 if [[ -f $FASM_EXTRA ]]; then
 	echo "writing final fasm"
 	cat "${TOP}.fasm" "${FASM_EXTRA}" > tmp.fasm

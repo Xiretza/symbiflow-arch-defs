@@ -23,10 +23,8 @@ DEVICENAME=0
 PARTNAME=0
 
 for arg in "$@"; do
-	echo "$arg"
 	case "$arg" in
 		-t|--top)
-			echo "adding top"
 			VERILOGLIST=0
 			XDCLIST=0
 			TOPNAME=1
