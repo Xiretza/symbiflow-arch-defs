@@ -3,7 +3,5 @@
 MYPATH=`realpath $0`
 MYPATH=`dirname ${MYPATH}`
 
-if [ -z $VPRPATH ]; then
-	export VPRPATH=$MYPATH
-	export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH}
-fi
+export VPRPATH=${VPRPATH:-$MYPATH}
+export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH:-}

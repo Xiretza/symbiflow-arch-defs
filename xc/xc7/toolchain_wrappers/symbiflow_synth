@@ -65,15 +65,15 @@ for arg in $@; do
 			PARTNAME=1
 			;;
 		*)
-			if [ $VERILOGLIST -eq 1 ]; then
+			if [[ $VERILOGLIST -eq 1 ]]; then
 				VERILOG_FILES+=($arg)
-			elif [ $XDCLIST -eq 1 ]; then
+			elif [[ $XDCLIST -eq 1 ]]; then
 				XDC_FILES+=($arg)
-			elif [ $TOPNAME -eq 1 ]; then
+			elif [[ $TOPNAME -eq 1 ]]; then
 				TOP=$arg
-			elif [ $DEVICENAME -eq 1 ]; then
+			elif [[ $DEVICENAME -eq 1 ]]; then
 				DEVICE=$arg
-			elif [ $PARTNAME -eq 1 ]; then
+			elif [[ $PARTNAME -eq 1 ]]; then
 				PART=$arg
 			else
 				echo "Usage: synth [-t|--top <top module name> -v|--verilog <Verilog files list> [-x|--xdc <XDC files list>]"
@@ -85,7 +85,7 @@ for arg in $@; do
 	esac
 done
 
-if [ ${#VERILOG_FILES[@]} -eq 0 ]; then
+if [[ ${#VERILOG_FILES[@]} -eq 0 ]]; then
 	echo "Please provide at least one Verilog file"
 	exit 1
 fi

@@ -9,7 +9,7 @@ source ${MYPATH}/env
 echo "Writing bitstream ..."
 
 FRM2BIT=""
-if [ ! -z ${FRAMES2BIT} ]; then
+if [[ -v FRAMES2BIT ]]; then
 	FRM2BIT="--frm2bit ${FRAMES2BIT}"
 fi
 
@@ -50,10 +50,10 @@ done
 
 DATABASE_DIR=${DATABASE_DIR:=$(prjxray-config)}
 
-if [ -z $DEVICE ]; then
+if [[ -z $DEVICE ]]; then
 	# Try to find device name. Accept only when exactly one is found
 	PART_DIRS=(${DATABASE_DIR}/*/${PART})
-	if [ ${#PART_DIRS[@]} -eq 1 ]; then
+	if [[ ${#PART_DIRS[@]} -eq 1 ]]; then
 		DEVICE=$(basename $(dirname "${PART_DIRS[0]}"))
 	else
 		echo "Please provide device name"
@@ -63,12 +63,12 @@ fi
 
 DBROOT=`realpath ${DATABASE_DIR}/${DEVICE}`
 
-if [ -z $FASM ]; then
+if [[ -z $FASM ]]; then
 	echo "Please provide fasm file name"
 	exit 1
 fi
 
-if [ -z $BIT ]; then
+if [[ -z $BIT ]]; then
 	echo "Please provide bit file name"
 	exit 1
 fi

@@ -13,7 +13,7 @@ DEVICE=$4
 ARCH_DEF=$5
 PCF=$6
 
-if [ ! -z $PCF ]; then
+if [[ -n $PCF ]]; then
     PCF_OPTS="--pcf $PCF"
 fi
 

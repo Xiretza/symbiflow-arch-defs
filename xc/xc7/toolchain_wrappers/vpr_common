@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z $VPR_OPTIONS ]; then
+if [[ -z ${VPR_OPTIONS:+} ]]; then
      echo "Using default VPR options."
      VPR_OPTIONS="@VPR_ARGS@"
 fi
@@ -58,19 +58,19 @@ function parse_args {
           esac
      done
 
-     if [ -z $DEVICE ] && [ -n $PART ]; then
+     if [[ -z $DEVICE ]] && [[ -n $PART ]]; then
           # Try to find device name. Accept only when exactly one is found
           PART_DIRS=(${MYPATH}/../share/symbiflow/arch/*/${PART})
-          if [ ${#PART_DIRS[@]} -eq 1 ]; then
+          if [[ ${#PART_DIRS[@]} -eq 1 ]]; then
                DEVICE=$(basename $(dirname "${PART_DIRS[0]}"))
           fi
      fi
-     if [ -z $DEVICE ]; then
+     if [[ -z $DEVICE ]]; then
           echo "Please provide device name"
           exit 1
      fi
 
-     if [ -z $EBLIF ]; then
+     if [[ -z $EBLIF ]]; then
           echo "Please provide blif file name"
           exit 1
      fi
@@ -95,7 +95,7 @@ function run_vpr {
      set -e
 
      SDC_OPTIONS=""
-     if [ ! -z $SDC ]
+     if [[ -n $SDC ]]
      then
           SDC_OPTIONS="--sdc_file $SDC"
      fi
