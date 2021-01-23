@@ -6,12 +6,13 @@ MYPATH=$(dirname "${MYPATH}")
 
 # shellcheck source=env
 source "${MYPATH}/env"
+
+OUT_NOISY_WARNINGS=noisy_warnings_route.log
+
 # shellcheck source=vpr_common
 source "${VPRPATH}/vpr_common"
 
 parse_args "$@"
-
-export OUR_NOISY_WARNINGS=noisy_warnings-${DEVICE}_pack.log
 
 run_vpr --route
 
