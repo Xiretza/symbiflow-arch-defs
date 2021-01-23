@@ -45,6 +45,11 @@ while true; do
 		--)
 			break
 			;;
+		*)
+			echo "Usage:"
+			echo "symbiflow_write_bitstream (-f|--fasm) FASM_INPUT_FILE (-b|--bit) BIT_INPUT_FILE"
+			echo "                          [(-d|--device) DEVICE_TYPE] [(-p|--part) PART_NAME]"
+			exit 1
 	esac
 done
 
