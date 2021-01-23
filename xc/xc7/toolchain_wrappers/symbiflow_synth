@@ -93,7 +93,8 @@ export OUT_SDC=${TOP}.sdc
 export SYNTH_JSON=${TOP}_io.json
 export OUT_SYNTH_V=${TOP}_synth.v
 export OUT_EBLIF=${TOP}.eblif
-export PART_JSON=$(realpath "${DATABASE_DIR}/${DEVICE}/${PART}/part.json")
+PART_JSON=$(realpath "${DATABASE_DIR}/${DEVICE}/${PART}/part.json")
+export PART_JSON
 export OUT_FASM_EXTRA=${TOP}_fasm_extra.fasm
 LOG=${TOP}_synth.log
 
