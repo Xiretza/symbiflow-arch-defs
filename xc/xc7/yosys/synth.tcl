@@ -133,7 +133,7 @@ read_verilog -specify -lib $::env(TECHMAP_PATH)/cells_sim.v
 
 techmap -map  $::env(TECHMAP_PATH)/carry_map.v
 write_json $::env(OUT_JSON).carry_fixup.json
-exec $::env(PYTHON3) $::env(UTILS_PATH)/fix_xc7_carry.py < $::env(OUT_JSON).carry_fixup.json > $::env(OUT_JSON).carry_fixup_out.json
+exec $::env(UTILS_PATH)/fix_xc7_carry.py < $::env(OUT_JSON).carry_fixup.json > $::env(OUT_JSON).carry_fixup_out.json
 design -push
 read_json $::env(OUT_JSON).carry_fixup_out.json
 
