@@ -10,5 +10,20 @@ export SHARE_DIR_PATH
 export TECHMAP_PATH=${SHARE_DIR_PATH}/techmaps/xc7_vpr/techmap
 export UTILS_PATH=${SHARE_DIR_PATH}/scripts
 
+find_device_from_part() {
+	# Try to find device name. Accept only when exactly one is found
+
+	local PART=$1
+	[[ -n ${PART} ]] || return 1
+	PART_DIRS=("${DATABASE_DIR}"/*/"${PART}")
+	if [[ ${#PART_DIRS[@]} -eq 1 ]]; then
+		basename -- "$(dirname "${PART_DIRS[0]}")"
+		return 0
+	else
+		echo "Could not determine device from part name alone - please specify a device"
+		return 1
+	fi
+}
+
 export VPRPATH=${VPRPATH:-$ENVPATH}
 export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH:-}
