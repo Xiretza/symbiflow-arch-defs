@@ -14,11 +14,11 @@ source "${VPRPATH}/vpr_common"
 
 parse_args "$@"
 
-if [[ -z $PCF ]]; then
+if [[ -z ${PCF} ]]; then
     PCF=""
 fi
 
-if [[ -z $NET ]]; then
+if [[ -z ${NET} ]]; then
      echo "Please provide net file name"
      exit 1
 fi

@@ -23,7 +23,7 @@ DEVICENAME=0
 PARTNAME=0
 
 for arg in "$@"; do
-	case "$arg" in
+	case "${arg}" in
 		-t|--top)
 			VERILOGLIST=0
 			XDCLIST=0
@@ -60,16 +60,16 @@ for arg in "$@"; do
 			PARTNAME=1
 			;;
 		*)
-			if [[ $VERILOGLIST -eq 1 ]]; then
+			if [[ ${VERILOGLIST} -eq 1 ]]; then
 				VERILOG_FILES+=("${arg}")
-			elif [[ $XDCLIST -eq 1 ]]; then
+			elif [[ ${XDCLIST} -eq 1 ]]; then
 				XDC_FILES+=("${arg}")
-			elif [[ $TOPNAME -eq 1 ]]; then
-				TOP=$arg
-			elif [[ $DEVICENAME -eq 1 ]]; then
-				DEVICE=$arg
-			elif [[ $PARTNAME -eq 1 ]]; then
-				PART=$arg
+			elif [[ ${TOPNAME} -eq 1 ]]; then
+				TOP=${arg}
+			elif [[ ${DEVICENAME} -eq 1 ]]; then
+				DEVICE=${arg}
+			elif [[ ${PARTNAME} -eq 1 ]]; then
+				PART=${arg}
 			else
 				echo "Usage: synth [-t|--top <top module name> -v|--verilog <Verilog files list> [-x|--xdc <XDC files list>]"
 				echo "             [-d|--device <device type (e.g. artix7)>] [-p|--part <part name>]"
@@ -88,7 +88,7 @@ fi
 export TOP
 export USE_ROI="FALSE"
 export INPUT_XDC_FILE=${XDC_FILES[*]}
-export OUT_JSON=$TOP.json
+export OUT_JSON=${TOP}.json
 export OUT_SDC=${TOP}.sdc
 export SYNTH_JSON=${TOP}_io.json
 export OUT_SYNTH_V=${TOP}_synth.v
@@ -100,4 +100,4 @@ LOG=${TOP}_synth.log
 
 yosys -p "tcl ${SYNTH_TCL_PATH}" -l "${LOG}" "${VERILOG_FILES[@]}"
 python3 "${SPLIT_INOUTS}" -i "${OUT_JSON}" -o "${SYNTH_JSON}"
-yosys -p "read_json $SYNTH_JSON; tcl ${CONV_TCL_PATH}"
+yosys -p "read_json ${SYNTH_JSON}; tcl ${CONV_TCL_PATH}"

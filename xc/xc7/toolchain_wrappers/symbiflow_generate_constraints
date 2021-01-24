@@ -13,7 +13,7 @@ DEVICE=$4
 ARCH_DEF=$5
 PCF=$6
 
-if [[ -n $PCF ]]; then
+if [[ -n ${PCF} ]]; then
     PCF_OPTS=(--pcf "${PCF}")
 fi
 
@@ -21,7 +21,7 @@ VPR_GRID_MAP=${SHARE_DIR_PATH}/arch/${DEVICE}/vpr_grid_map.csv
 PINMAP=${SHARE_DIR_PATH}/arch/${DEVICE}/${PART}/pinmap.csv
 IOGEN=${SHARE_DIR_PATH}/scripts/prjxray_create_ioplace.py
 CONSTR_GEN=${SHARE_DIR_PATH}/scripts/prjxray_create_place_constraints.py
-PROJECT=$(basename -- "$EBLIF")
+PROJECT=$(basename -- "${EBLIF}")
 IOPLACE_FILE="${PROJECT%.*}.ioplace"
 
 python3 "${IOGEN}" \

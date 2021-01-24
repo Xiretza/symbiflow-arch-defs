@@ -65,11 +65,11 @@ function parse_args {
           esac
      done
 
-     if [[ -z $DEVICE ]]; then
+     if [[ -z ${DEVICE} ]]; then
           DEVICE=$(find_device_from_part "${PART}")
      fi
 
-     if [[ -z $EBLIF ]]; then
+     if [[ -z ${EBLIF} ]]; then
           echo "Please provide blif file name"
           exit 1
      fi
@@ -89,7 +89,7 @@ function run_vpr {
      set -e
 
      SDC_OPTIONS=()
-     if [[ -n $SDC ]]
+     if [[ -n ${SDC} ]]
      then
           SDC_OPTIONS=(--sdc_file "${SDC}")
      fi

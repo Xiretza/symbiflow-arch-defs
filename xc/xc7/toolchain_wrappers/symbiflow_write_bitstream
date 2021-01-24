@@ -53,18 +53,18 @@ while true; do
 	esac
 done
 
-if [[ -z $DEVICE ]]; then
+if [[ -z ${DEVICE} ]]; then
 	DEVICE=$(find_device_from_part "${PART}")
 fi
 
 DBROOT=$(realpath "${DATABASE_DIR}/${DEVICE}")
 
-if [[ -z $FASM ]]; then
+if [[ -z ${FASM} ]]; then
 	echo "Please provide fasm file name"
 	exit 1
 fi
 
-if [[ -z $BIT ]]; then
+if [[ -z ${BIT} ]]; then
 	echo "Please provide bit file name"
 	exit 1
 fi
