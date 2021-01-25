@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENVPATH=$(realpath "$0")
+ENVPATH=$(realpath "${BASH_SOURCE[0]}")
 ENVPATH=$(dirname "${ENVPATH}")
 
 DATABASE_DIR=${DATABASE_DIR:-$(prjxray-config)}
