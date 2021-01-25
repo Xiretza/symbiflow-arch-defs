@@ -4,6 +4,7 @@ set -e
 MYPATH=`realpath $0`
 MYPATH=`dirname ${MYPATH}`
 
+# shellcheck source=env
 source ${MYPATH}/env
 echo "Writing bitstream ..."
 
