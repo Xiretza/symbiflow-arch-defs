@@ -4,7 +4,7 @@
 
 if [[ -z ${VPR_OPTIONS:+} ]]; then
      echo "Using default VPR options."
-     read -ra VPR_OPTIONS <<<"@VPR_ARGS@"
+     VPR_OPTIONS="@VPR_ARGS@"
 fi
 
 function parse_args {
