@@ -1,17 +1,15 @@
 #!/bin/bash
-set -eu
+set -e
 
-MYPATH=$(realpath "$0")
-MYPATH=$(dirname "${MYPATH}")
+MYPATH=`realpath $0`
+MYPATH=`dirname ${MYPATH}`
 
-# shellcheck source=env
-source "${MYPATH}/env"
-
-OUT_NOISY_WARNINGS=noisy_warnings_rr_graph.log
-
-# shellcheck source=vpr_common
-source "${VPRPATH}/vpr_common"
+source ${MYPATH}/env
+source ${MYPATH}/vpr_common
 
 parse_args "$@"
 
+OUT_NOISY_WARNINGS=noisy_warnings-${DEVICE}_place.log
+
 run_vpr_xml_rr_graph --pack
+
